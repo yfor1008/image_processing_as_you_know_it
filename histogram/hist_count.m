@@ -34,17 +34,21 @@ elseif nargout == 4
         im_r = im(:,:,1);
         im_g = im(:,:,2);
         im_b = im(:,:,3);
-        im = rgb2gray(im);
+        gray = rgb2gray(im);
     else
         error('输出参数数目不对, 请查看函数帮助');
     end
+    im_r = im_r(:);
+    im_g = im_g(:);
+    im_b = im_b(:);
+    gray = gray(:);
 
     h_gray = zeros(256, 1);
     h_r = zeros(256, 1);
     h_g = zeros(256, 1);
     h_b = zeros(256, 1);
-    for i = 1:length(im)
-        h_gray(im(i)+1) = h_gray(im(i)+1) + 1;
+    for i = 1:length(gray)
+        h_gray(gray(i)+1) = h_gray(gray(i)+1) + 1;
         h_r(im_r(i)+1) = h_r(im_r(i)+1) + 1;
         h_g(im_g(i)+1) = h_g(im_g(i)+1) + 1;
         h_b(im_b(i)+1) = h_b(im_b(i)+1) + 1;
