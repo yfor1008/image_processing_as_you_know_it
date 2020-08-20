@@ -87,12 +87,6 @@ figure('NumberTitle', 'off', 'Name', 'Peak Area on Image')
 imshow(im)
 
 % save
-set(gca, 'color', 'none'); % set background
-fig_hist = getframe(gcf);
-fig_hist = fig_hist.cdata;
-alpha = ones(size(fig_hist, 1), size(fig_hist, 2));
-fig_gray = rgb2gray(fig_hist);
-alpha(fig_gray==240) = 0; % get alpha
-imwrite(fig_hist, 'peak_area.png', 'Alpha', alpha)
+imwrite(im, 'peak_area.png')
 
 end
