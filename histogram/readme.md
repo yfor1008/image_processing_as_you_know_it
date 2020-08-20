@@ -5,7 +5,7 @@
 - 图像动态范围
 - 图像场景大致类别
 
-![原始图像](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/timg.jpg?token=AE3EGYDYB3ZMMMTKT6URHEC7H2KLE)
+![原始图像](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/timg.jpg?token=AE3EGYG4APETMIBYVDN3PM27H2LFM)
 
 ## 使用方法
 
