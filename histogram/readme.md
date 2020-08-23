@@ -5,8 +5,6 @@
 - 图像动态范围
 - 图像场景大致类别
 
-![原始图像](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/timg.jpg?token=AE3EGYG4APETMIBYVDN3PM27H2LFM)
-
 ## 使用方法
 
 ### 获取直方图
@@ -18,7 +16,7 @@ im = imread('./src/timg.jpg');
 [h_gray, h_r, h_g, h_b] = hist_count(im, 1); % 获取直方图并显示
 ```
 
-![rgb 直方图](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/hist_rgb.png?token=AE3EGYGDPHHBEVRJM2X732K7H2KPC)
+![rgb 直方图](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/hist_rgb.png)
 
 ### 对直方图进行分析
 
@@ -29,9 +27,9 @@ addpath('../gaussian_fit/');
 [outHist] = hist_analysis(h_gray, 1); % 分析并显示结果
 ```
 
-![高斯拟合](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/fit_result.png?token=AE3EGYDWDRG67JXAMNAZ77K7H2KTW)
+![高斯拟合](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/fit_result.png)
 
-![直方图](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/peak_range.png?token=AE3EGYANXXSXHQUINADLM5S7H2KVO)
+![直方图动态范围](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/peak_range.png)
 
 ### 将结果显示在图像上
 
@@ -41,5 +39,5 @@ addpath('../gaussian_fit/');
 show_peak(im, outHist);
 ```
 
-![场景类别](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/peak_area.png?token=AE3EGYFNESN2FHNPXNAF3427H2KX4)
+![场景类别](https://raw.githubusercontent.com/yfor1008/image_processing_as_you_know_it/master/histogram/src/peak_area.png)
 
