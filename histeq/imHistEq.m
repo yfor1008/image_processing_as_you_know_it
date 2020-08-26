@@ -45,24 +45,10 @@ end
 
 if show
     figure('NumberTitle', 'off', 'Name', 'Result of Histogram Equalization')
-    T = tiledlayout(1,2);
-    nexttile(1)
-    imshow(im)
-    title('原始图像')
-    nexttile(2)
-    imshow(im_eq)
-    title('均衡后图像')
+    im_pair = cat(2, im, im_eq);
+    imshow(im_pair)
 
-    T.TileSpacing = 'compact';
-    T.Padding = 'compact';
-
-    set(gca, 'color', 'none');
-    fig_rgb = getframe(gcf);
-    fig_rgb = fig_rgb.cdata;
-    alpha = ones(size(fig_rgb, 1), size(fig_rgb, 2));
-    fig_gray = rgb2gray(fig_rgb);
-    alpha(fig_gray==240) = 0;
-    imwrite(fig_rgb, 'result_of_histeq.png', 'Alpha', alpha);
+    imwrite(im_pair, 'result_of_histeq.png');
 
 end
 
