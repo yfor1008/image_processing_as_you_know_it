@@ -1,21 +1,20 @@
 close all; clear; clc;
 
+% must add histogram path
+addpath('../histogram/');
+
+% %% gray image test
+% % read image
+% im = imread('./src/pout.tif');
+% % imshow(im)
+% 
+% % hist equalization
+% im_eq = imHistEq(im, 1);
+
+%% color image test
 % read image
-im = imread('./src/pout.tif');
+im = imread('./src/test.png');
 % imshow(im)
 
-% hist
-addpath('../histogram/');
-[h_gray] = hist_count(im, 0); % 灰度直方图
-
-% histeq
-[T, eq] = hist_eq(h_gray, 0);
-im_eq = im;
-for h = 1:size(im, 1)
-    for w = 1:size(im, 2)
-        im_eq(h, w) = T(im(h, w)+1);
-    end
-end
-
-figure,
-imshow([im, im_eq])
+% hist equalization
+im_eq = imHistEq(im, 1);
