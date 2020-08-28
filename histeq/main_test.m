@@ -9,7 +9,11 @@ addpath('../histogram/');
 % % imshow(im)
 % 
 % % hist equalization
-% im_eq = imHistEq(im, 1);
+% % im_eq = imHistEq(im, 1);
+% 
+% % modify
+% im_eqM = imHistEqModify(im, 1, 0);
+
 
 %% color image test
 % read image
@@ -18,3 +22,6 @@ im = imread('./src/test.png');
 
 % hist equalization
 im_eq = imHistEq(im, 1);
+
+% modify
+im_eqM = imHistEqModify(im, 1, 1);
