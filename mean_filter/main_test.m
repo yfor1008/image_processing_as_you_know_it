@@ -6,6 +6,15 @@ im = imread([path, file]);
 gray = rgb2gray(im);
 % imshow(im)
 
-% padded = impadding(gray, 3);
-filtered = meanFilter(gray, 3);
-imshow(uint8(filtered))
+r = 3;
+
+% padded = impadding(gray, r);
+filtered = meanFilter(gray, r);
+
+% matlab 实现, 调用了 intel IPP 库
+h = ones(2*r+1, 2*r+1) / ((2*r+1) * (2*r+1));
+filtered1 = imfilter(gray, h, 'replicate');
+
+% 差别
+diff = uint8(abs(double(filtered) - double(filtered1)));
+imshow([filtered, filtered1, diff])
