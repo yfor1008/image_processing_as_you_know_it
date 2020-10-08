@@ -1,4 +1,5 @@
 close all; clear; clc;
+addpath('../padding/');
 
 [file, path] = uigetfile('*.bmp; *.png; *.jpg', 'select file ...');
 

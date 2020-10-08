@@ -1,4 +1,5 @@
 close all; clear; clc;
+addpath('../padding/');
 
 if ~exist('time_elapased.mat', 'file')
     im = imread('./src/lena.jpg');
