@@ -7,7 +7,11 @@ im = imread('./src/timg.jpg');
 
 % hist
 % [h_gray] = hist_count(im, 1); % 灰度直方图
-[h_gray, h_r, h_g, h_b] = hist_count(im, 1); % RGB 直方图
+[h_gray, h_r, h_g, h_b] = hist_count(im, 0); % RGB 直方图
+
+
+% ratio index
+index = getRatioIndex(h_gray, 1.);
 
 
 % hist analysis
