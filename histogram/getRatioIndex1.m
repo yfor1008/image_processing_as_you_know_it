@@ -1,4 +1,4 @@
-function [index] = getRatioIndex(hist, ratio)
+function [index] = getRatioIndex1(hist, ratio)
 % getRatioIndex - 获取 ratio 对应的 index
 %
 % input:
@@ -8,7 +8,14 @@ function [index] = getRatioIndex(hist, ratio)
 %   - index: int, ratio 对应的 index, [1, 256]
 %
 
-cdf = cumsum(hist);
-index = find(cdf >= ratio, 1);
+index = 0;
+cdf = 0;
+for idx = 1:256
+    cdf = cdf + hist(idx);
+    if cdf >= ratio
+        index = idx;
+        break;
+    end
+end
 
 end
