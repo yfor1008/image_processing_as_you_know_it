@@ -43,7 +43,18 @@ if ~exist('time_elapased.mat', 'file')
         run_times_fast(idx) = time_elapased/num;
         idx = idx + 1;
     end
-    save('time_elapased.mat', 'run_times_origin', 'run_times_matlab', 'run_times_fast', 'radius')
+    run_times_constant = zeros(length(radius), 1);
+    idx = 1;
+    for r = radius
+        time_start = tic;
+        for i = 1:num
+            filtered = medianFilterConstant(gray, r);
+        end
+        time_elapased = toc(time_start);
+        run_times_constant(idx) = time_elapased/num;
+        idx = idx + 1;
+    end
+    save('time_elapased.mat', 'run_times_origin', 'run_times_matlab', 'run_times_fast', 'run_times_constant', 'radius')
 else
     load time_elapased.mat
 end
@@ -53,7 +64,8 @@ semilogy(radius, run_times_origin*1000, 'LineWidth', 1.1)
 hold on,
 semilogy(radius, run_times_matlab*1000, 'LineWidth', 1.1)
 semilogy(radius, run_times_fast*1000, 'LineWidth', 1.1)
-legend('origin', 'matlab', 'fast')
+semilogy(radius, run_times_constant*1000, 'LineWidth', 1.1)
+legend('origin', 'matlab', 'fast', 'constant')
 xlabel('窗口半径, Half Radius')
 ylabel('耗时(毫秒), Time Elapased(ms)')
 ax = gca;

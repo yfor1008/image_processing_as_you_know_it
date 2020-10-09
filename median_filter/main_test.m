@@ -15,8 +15,9 @@ r = 3;
 filtered = medianFilter(gray, r);
 filtered1 = medfilt2(gray, [r*2+1, r*2+1]);
 filtered2 = medianFilterFast(gray, r);
+filtered3 = medianFilterConstant(gray, r);
 
 % 差别
-diff = uint8(abs(double(filtered) - double(filtered2)));
+diff = uint8(abs(double(filtered) - double(filtered3)));
 % imshow([filtered, filtered2, diff])
 imshow(double(diff(r+1:end-r, r+1:end-r)))
