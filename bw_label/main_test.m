@@ -18,6 +18,12 @@ title('Label Image')
 
 % seedfill
 labeled1 = seedFill(BW);
-labeled1 = label2rgb(labeled1, 'jet', 'k', 'shuffle');
-figure, imshow(labeled)
+labeled11 = label2rgb(labeled1, 'jet', 'k', 'shuffle');
+figure, imshow(labeled11)
+title('Label Image')
+
+% contourtrace
+labeled2 = contourTrace(BW);
+labeled22 = label2rgb(labeled2, 'jet', 'k', 'shuffle');
+figure, imshow(labeled22)
 title('Label Image')

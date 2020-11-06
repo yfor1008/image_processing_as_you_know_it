@@ -28,8 +28,8 @@ rows = zeros(pixels, 1);
 cols = zeros(pixels, 1);
 mask = zeros(H, W); % 标记是否已处理: 0-未处理, 1-已处理
 label = 0;
-for r = 2:H-1
-    for c = 2:W-1
+for r = 1:H
+    for c = 1:W
         if labeled(r,c) == 1 && mask(r,c) == 0
             label = label + 1;
             
@@ -40,9 +40,13 @@ for r = 2:H-1
             labeled(cr,cc) = label;
             
             up = cr-1;
+            up = max(up, 1);
             down = cr+1;
+            down = min(down, H);
             left = cc-1;
+            left = max(left, 1);
             right = cc+1;
+            right = min(right, W);
             
             idx_start = 1;
             idx_end = 1;
