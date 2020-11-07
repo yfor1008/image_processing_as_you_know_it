@@ -18,7 +18,7 @@ label = 0;
 for r = 1:H
     for c = 1:W
 
-        if bw(r, c)
+        if bw(r, c) && (labeled(r, c) == 0)
             label = label + 1;
             labeled = Label(bw, labeled, label, H, W, c, r);
         end
@@ -55,11 +55,14 @@ while (m <= imW) && bw(y, m)
     m = m + 1;
 end
 
-while x < m
-    if (y - 1 > 1) && bw(y - 1, x)
+% 这里 x-1 和 x<=m 是为了满足 8 邻域条件, 关键!!!
+x = max(x - 1, 1);
+m = min(m, imW);
+while x <= m
+    if (y - 1 > 1) && bw(y - 1, x) && (labeled(y - 1, x) == 0)
         labeled = Label(bw, labeled, label, imH, imW, x, y - 1);
     end
-    if (y + 1 <= imH) && bw(y + 1, x)
+    if (y + 1 <= imH) && bw(y + 1, x) && (labeled(y + 1, x) == 0)
         labeled = Label(bw, labeled, label, imH, imW, x, y + 1);
     end
     x = x + 1;
