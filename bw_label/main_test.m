@@ -35,7 +35,8 @@ title('Binary Image')
 % title('Label Image')
 
 % ﻿OptConLabel
-labeled4 = OptConLabel(BW);
+% labeled4 = OptConLabel(BW);
+labeled4 = OCL(BW);
 labeled44 = label2rgb(labeled4, 'jet', 'k', 'shuffle');
 figure, imshow(labeled44)
 title('Label Image')
