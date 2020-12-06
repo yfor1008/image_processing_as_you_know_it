@@ -8,6 +8,7 @@ if ~exist('time_elapased.mat', 'file')
     run_times_seedfill = zeros(length(scale), 1);
     run_times_contourtrace = zeros(length(scale), 1);
     run_times_hybridobject = zeros(length(scale), 1);
+    run_times_OCL = zeros(length(scale), 1);
     pixels = zeros(length(scale), 1);
 
     % matlab test
@@ -70,8 +71,28 @@ if ~exist('time_elapased.mat', 'file')
         run_times_hybridobject(idx) = time_elapased/num;
         idx = idx + 1;
     end
+    
+    % OCL
+    idx = 1;
+    for s = scale
+        I1 = imresize(I, s);
+        BW = I1 > 128;
 
-    save('time_elapased.mat', 'run_times_matlab', 'run_times_seedfill', 'run_times_contourtrace', 'run_times_hybridobject', 'pixels')
+        time_start = tic;
+        for i = 1:num
+            labeled2 = OptConLabel(BW);
+        end
+        time_elapased = toc(time_start);
+        run_times_OCL(idx) = time_elapased/num;
+        idx = idx + 1;
+    end
+
+    save('time_elapased.mat', 'run_times_matlab', ...
+                              'run_times_seedfill', ...
+                              'run_times_contourtrace', ...
+                              'run_times_hybridobject', ...
+                              'run_times_OCL', ...
+                              'pixels')
 else
     load time_elapased.mat
 end
@@ -82,7 +103,8 @@ hold on,
 plot(pixels, run_times_seedfill*1000, 'LineWidth', 1.1)
 plot(pixels, run_times_contourtrace*1000, 'LineWidth', 1.1)
 plot(pixels, run_times_hybridobject*1000, 'LineWidth', 1.1)
-legend('matlab', 'seedfill', 'contourtrace', 'hybridobject')
+plot(pixels, run_times_OCL*1000, 'LineWidth', 1.1)
+legend('matlab', 'seedfill', 'contourtrace', 'hybridobject', 'OCL')
 xlabel('像素个数, Pixel Number')
 ylabel('耗时(毫秒), Time Elapased(ms)')
 ax = gca;

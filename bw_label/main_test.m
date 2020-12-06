@@ -28,8 +28,14 @@ title('Binary Image')
 % figure, imshow(labeled22)
 % title('Label Image')
 
-% hybridobject
-labeled3 = hybridObject(BW);
-labeled33 = label2rgb(labeled3, 'jet', 'k', 'shuffle');
-figure, imshow(labeled33)
+% % hybridobject
+% labeled3 = hybridObject(BW);
+% labeled33 = label2rgb(labeled3, 'jet', 'k', 'shuffle');
+% figure, imshow(labeled33)
+% title('Label Image')
+
+% ﻿OptConLabel
+labeled4 = OptConLabel(BW);
+labeled44 = label2rgb(labeled4, 'jet', 'k', 'shuffle');
+figure, imshow(labeled44)
 title('Label Image')
