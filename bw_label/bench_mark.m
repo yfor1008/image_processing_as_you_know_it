@@ -80,7 +80,7 @@ if ~exist('time_elapased.mat', 'file')
 
         time_start = tic;
         for i = 1:num
-            labeled2 = OptConLabel(BW);
+            labeled2 = OCL(BW);
         end
         time_elapased = toc(time_start);
         run_times_OCL(idx) = time_elapased/num;

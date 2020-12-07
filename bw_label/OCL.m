@@ -44,11 +44,11 @@ for y = 1:H
                 L(y, x) = findRoot(P, Lb);
             elseif flag_c && c
                 if flag_d && d
-                    L(y, x) = union(P, Lc, Ld);
+                    [L(y, x), P] = union(P, Lc, Ld);
                 elseif flag_a && a
-                    L(y, x) = union(P, La, Ld);
+                    [L(y, x), P] = union(P, Lc, La);
                 else
-                    L(y, x) = findRoot(P, Ld);
+                    L(y, x) = findRoot(P, Lc); %% 不是 Ld
                 end
             elseif flag_d && d
                 L(y, x) = findRoot(P, Ld);
@@ -78,8 +78,8 @@ for y = 1:H
 end
 
 labeled = L;
-
 end
+
 
 function [root] = findRoot(P, i)
 % findRoot - 查找根节点
@@ -181,8 +181,8 @@ if i ~= j
     rootj = findRoot(P, j);
     if root > rootj
         root = rootj;
-        P = setRoot(P, j, root);
     end
+    P = setRoot(P, j, root);
 end
 P = setRoot(P, i, root);
 end
