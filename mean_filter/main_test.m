@@ -22,4 +22,7 @@ filtered1 = imfilter(gray, h, 'replicate');
 % 差别
 diff = uint8(abs(double(filtered) - double(filtered3)));
 % imshow([filtered, filtered2, diff])
-imshow(double(diff))
+% imshow(double(diff))
+
+filtered4 = meanFilterSatSideWindow(gray, r);
+
