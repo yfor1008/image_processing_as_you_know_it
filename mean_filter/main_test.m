@@ -26,6 +26,7 @@ r = 3;
 
 % filtered4 = meanFilterSatSideWindow(gray, r);
 
-filtered5 = meanFilterKuwahara(gray, r);
-filtered6 = meanFilterKuwaharaSat(gray, r);
+% filtered5 = meanFilterKuwahara(gray, r);
+% filtered6 = meanFilterKuwaharaSat(gray, r);
 
+filtered7 = meanFilterSNN(gray, 7);
